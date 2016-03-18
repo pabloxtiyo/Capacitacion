@@ -37,9 +37,9 @@
 	
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="org.postgresql.Driver"/>
-        <beans:property name="url" value="jdbc:postgresql://localhost/localiza"/>
+        <beans:property name="url" value="jdbc:postgresql://localhost/prueba"/>
         <beans:property name="username" value="postgres"/>
-        <beans:property name="password" value="xtiyo"/>
+        <beans:property name="password" value="0000"/>
     </beans:bean>
  
     <beans:bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -55,7 +55,9 @@
         <beans:property name="packagesToScan" value="com.pportillo.localiza.model"/>
     </beans:bean>
  
-    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    	
+    </beans:bean>
  
 	
 	

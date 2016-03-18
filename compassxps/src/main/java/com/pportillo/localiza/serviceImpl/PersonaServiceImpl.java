@@ -4,22 +4,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pportillo.localiza.model.Persona;
+import com.pportillo.localiza.model.Telefono;
 import com.pportillo.localiza.model.repository.PersonaRepository;
+import com.pportillo.localiza.model.repository.TelefonoRepository;
 import com.pportillo.localiza.service.PersonaService;
 
-@Service
+@Service(value="PersonaServiceImpl")
 public class PersonaServiceImpl implements PersonaService
 {
 
 	@Autowired
 	private PersonaRepository personaRepository;
+	@Autowired
+	private TelefonoRepository telefonoRepository;
 	
 	@Override
-	public Persona save(Persona entity) {
+	@Transactional(rollbackFor = Exception.class,readOnly=true)
+	public Persona save(Persona entity) 
+	{
 		// TODO Auto-generated method stub
-		return personaRepository.save(entity);
+		Telefono tel = telefonoRepository.save(entity.getTelefono());
+		entity.setTelefono(tel);
+		return personaRepository.saveAndFlush(entity);
 	}
 
 	@Override

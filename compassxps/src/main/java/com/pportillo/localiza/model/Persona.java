@@ -1,9 +1,13 @@
 package com.pportillo.localiza.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity(name="Persona")
 public class Persona implements java.io.Serializable
@@ -18,8 +22,11 @@ public class Persona implements java.io.Serializable
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String surname;
+    private String nombre;
+    private String apellido;
+    @ManyToOne @JoinColumn(name="fk_telefono")
+    private Telefono telefono;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -30,24 +37,29 @@ public class Persona implements java.io.Serializable
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getSurname() {
-		return surname;
+	public String getApellido() {
+		return apellido;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	@Override
 	public String toString() {
-		return "Persona [id=" + id + ", name=" + name + ", surname=" + surname + "]";
+		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
-
-    
+	public Telefono getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(Telefono telefono) {
+		this.telefono = telefono;
+	}
+	    
 
 
 }

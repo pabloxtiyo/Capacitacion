@@ -13,7 +13,7 @@
 			for (var int = 0; int < data.length; int++) 
 			{
 				var val = data[int];
-				table += "<tr><td>"+val.name+"</td>"+"<td>"+val.surname+"</td></tr>";
+				table += "<tr><td>"+val.nombre+"</td>"+"<td>"+val.apellido+"</td></tr>";
 			}
 			
 			table += "</table>";
@@ -22,6 +22,24 @@
 		};
 	
 		$(document).ready(function(){
+			
+			$("#save").click(function(){
+				$.ajax({
+					type : "POST",
+					contentType : "application/json",
+					url : "./Clientes/Guardar",
+					success : function(data) 
+					{
+						alert(data);
+					},
+					error : function(e) {
+						console.log("ERROR: ", e);
+					},
+					done : function(e) {
+						console.log("DONE");
+					}
+				});
+			});
 			
 			$.ajax({
 				type : "GET",
@@ -52,6 +70,8 @@
 
 
 <div id="table"></div>
+
+<button id="save" type="button" title="Guardar">Guardar</button>
 
 </body>
 </html>
