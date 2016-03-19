@@ -28,7 +28,7 @@ public class PersonaServiceImpl implements PersonaService
 		// TODO Auto-generated method stub
 		Telefono tel = telefonoRepository.save(entity.getTelefono());
 		entity.setTelefono(tel);
-		return personaRepository.saveAndFlush(entity);
+		return personaRepository.save(entity);
 	}
 
 	@Override
@@ -49,6 +49,30 @@ public class PersonaServiceImpl implements PersonaService
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
 		return personaRepository.findAll();
+	}
+
+	@Override
+	public Persona buscarPersonaPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return personaRepository.findOneByNombreJPQL(nombre);
+	}
+
+	@Override
+	public List<Persona> buscarListaPersonaPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return personaRepository.findAllBynombre(nombre);
+	}
+
+	@Override
+	public Persona buscarPersonaPorNombreYApellido(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		return personaRepository.findOneByNombreAndApellido(nombre, apellido);
+	}
+
+	@Override
+	public Persona buscarPersonaPorTelefono(String phone) {
+		// TODO Auto-generated method stub
+		return personaRepository.findOneByTelefonoJPQL(phone);
 	}
 
 }

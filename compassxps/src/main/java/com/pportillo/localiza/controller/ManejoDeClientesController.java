@@ -2,14 +2,13 @@ package com.pportillo.localiza.controller;
 
 import java.util.List;
 
-import javax.annotation.Resources;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.pportillo.localiza.model.Persona;
 import com.pportillo.localiza.model.Telefono;
@@ -30,7 +29,7 @@ public class ManejoDeClientesController
 	}
 	
 	@RequestMapping(value="/Guardar",method=RequestMethod.POST)
-	public String save()
+	public @ResponseBody String save(@RequestParam("nombre") String name)
 	{
 		Persona per = new Persona();
 		per.setNombre("prueba3");
@@ -41,6 +40,13 @@ public class ManejoDeClientesController
 		per.setTelefono(tel);
 		PersonaServiceImpl.save(per);
 		return "ok";
+	}
+	
+
+	@RequestMapping(value="/Buscar",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Persona buscarNombre(@RequestParam("tel") String tel)
+	{
+		return PersonaServiceImpl.buscarPersonaPorTelefono(tel);				
 	}
 	
 }

@@ -71,7 +71,12 @@
 
 <div id="table"></div>
 
-<button id="save" type="button" title="Guardar">Guardar</button>
+<form action="./Clientes/Guardar" method="post">
+	<input name="nombre" placeholder="Ingrese su nombre"/>
+	<input name="apellido" placeholder="Ingrese su apellido"/>
+	<button id="save" type="submit" title="Guardar">Guardar</button>
+</form>
+
 
 </body>
 </html>

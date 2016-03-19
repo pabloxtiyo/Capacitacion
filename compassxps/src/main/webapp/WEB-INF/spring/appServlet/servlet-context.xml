@@ -15,7 +15,7 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-<!--Dispatches requests mapped to POJO @Controllers implementations-->
+	<!--Dispatches requests mapped to POJO @Controllers implementations-->
 	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <beans:property name="messageConverters">
             <beans:bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
@@ -37,9 +37,9 @@
 	
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="org.postgresql.Driver"/>
-        <beans:property name="url" value="jdbc:postgresql://localhost/prueba"/>
+        <beans:property name="url" value="jdbc:postgresql://localhost/localiza"/>
         <beans:property name="username" value="postgres"/>
-        <beans:property name="password" value="0000"/>
+        <beans:property name="password" value="xtiyo"/>
     </beans:bean>
  
     <beans:bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
