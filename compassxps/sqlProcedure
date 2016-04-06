@@ -1,0 +1,15 @@
+﻿CREATE OR REPLACE FUNCTION login_user(sts_username character varying)
+  RETURNS integer AS
+$BODY$
+	
+declare 
+	datos integer;
+begin 
+	select count(users.*) into datos from public.localiza_user as users where users.user_name = sts_username;
+	return datos;
+END
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION login_user(character varying)
+  OWNER TO postgres;
