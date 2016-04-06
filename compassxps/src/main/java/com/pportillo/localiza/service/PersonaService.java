@@ -4,7 +4,7 @@ package com.pportillo.localiza.service;
 import java.util.List;
 
 import com.pportillo.localiza.framework.GenericService;
-import com.pportillo.localiza.model.Persona;
+import com.pportillo.localiza.model.entity.Persona;
 
 public interface PersonaService extends GenericService<Persona>
 {

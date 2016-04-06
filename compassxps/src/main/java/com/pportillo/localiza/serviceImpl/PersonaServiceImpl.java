@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pportillo.localiza.model.Persona;
-import com.pportillo.localiza.model.Telefono;
+import com.pportillo.localiza.model.entity.Persona;
+import com.pportillo.localiza.model.entity.Telefono;
 import com.pportillo.localiza.model.repository.PersonaRepository;
 import com.pportillo.localiza.model.repository.TelefonoRepository;
 import com.pportillo.localiza.service.PersonaService;
 
 @Service(value="PersonaServiceImpl")
+@Transactional
 public class PersonaServiceImpl implements PersonaService
 {
 

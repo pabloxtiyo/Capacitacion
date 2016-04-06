@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.pportillo.localiza.model.Persona;
-import com.pportillo.localiza.model.Telefono;
+
+import com.pportillo.localiza.model.entity.Persona;
+import com.pportillo.localiza.model.entity.Telefono;
 import com.pportillo.localiza.service.PersonaService;
 
 @Controller
 @RequestMapping("/Clientes")
 public class ManejoDeClientesController 
 {
-	@Autowired()
+	@Autowired
 	@Qualifier("PersonaServiceImpl")
 	private PersonaService PersonaServiceImpl;
 	
