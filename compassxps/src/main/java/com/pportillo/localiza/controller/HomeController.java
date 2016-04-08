@@ -40,4 +40,10 @@ public class HomeController {
 		
 		return "Personas";
 	}
+	
+	@RequestMapping(value = "/actividades.do", method = RequestMethod.GET)
+	public String Actividades(Locale locale, Model model) {
+		
+		return "ToDoListAngular";
+	}
 }

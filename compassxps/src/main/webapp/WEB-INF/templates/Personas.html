@@ -14,8 +14,10 @@
 </head>
 <body ng-controller="personaCntrl">
 
+	<input type="text" ng-model="value"/>
+	
 	<table class="table">
-		<tr ng-repeat="persona in persons">
+		<tr ng-repeat="persona in persons | filter:value">
 			<td>{{persona.nombre}}</td>
 			<td>{{persona.apellido}}</td>
 		</tr>
