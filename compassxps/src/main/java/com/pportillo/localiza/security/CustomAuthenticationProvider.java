@@ -31,14 +31,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			String username = autentic.getName();
 			String password = (String) autentic.getCredentials();
 			
-			Integer usuario = jdbCallService.getValue(username, password);
+//			Integer usuario = jdbCallService.getValue(username, password);
+			Integer usuario = 1;
 			
 			if(usuario >= 1)
 			{
 				Authentication auth = null;
 				List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
-				grantedAuths.add(new CustomGrantedAuthority("ROLE_"+"Preuba"));
-				auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuths);
+				grantedAuths.add(new CustomGrantedAuthority("ROLE_"+"Prueba"));
+				auth = new UsernamePasswordAuthenticationToken("pablo", "pportillo", grantedAuths);
 				SecurityContextHolder.getContext().setAuthentication(autentic);
 				
 				return auth;

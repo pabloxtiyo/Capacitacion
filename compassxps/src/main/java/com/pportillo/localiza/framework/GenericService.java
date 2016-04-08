@@ -2,8 +2,6 @@ package com.pportillo.localiza.framework;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 public interface GenericService <T> 
 {
 

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,12 +21,14 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.annotations.Cascade;
+
 /**
  *
  * @author sguardado
  */
 @Entity
-@Table(name = "telefono", catalog = "localiza_db", schema = "public")
+@Table(name = "telefono", catalog = "prueba", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Telefono.findAll", query = "SELECT t FROM Telefono t"),
@@ -44,9 +47,7 @@ public class Telefono implements Serializable {
     private String numero;
     @Column(name = "tipo", length = 255)
     private String tipo;
-    @OneToMany(mappedBy = "telefono")
-    private List<Persona> personaList;
-
+    
     public Telefono() {
     }
 
@@ -78,14 +79,6 @@ public class Telefono implements Serializable {
         this.tipo = tipo;
     }
 
-    @XmlTransient
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
-    }
 
     @Override
     public int hashCode() {

@@ -13,7 +13,6 @@ import com.pportillo.localiza.model.repository.TelefonoRepository;
 import com.pportillo.localiza.service.PersonaService;
 
 @Service(value="PersonaServiceImpl")
-@Transactional
 public class PersonaServiceImpl implements PersonaService
 {
 
@@ -23,7 +22,6 @@ public class PersonaServiceImpl implements PersonaService
 	private TelefonoRepository telefonoRepository;
 	
 	@Override
-	@Transactional(rollbackFor = Exception.class,readOnly=true)
 	public Persona save(Persona entity) 
 	{
 		// TODO Auto-generated method stub
@@ -47,6 +45,7 @@ public class PersonaServiceImpl implements PersonaService
 	}
 
 	@Override
+	@Transactional
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
 		return personaRepository.findAll();

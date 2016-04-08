@@ -1,25 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
 <head>
-	<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script type="text/javascript" th:src="@{/resources/js/angularjs/UsersAngularJs.js}"></script>
 
-	<title>Home</title>
-	
+
+<title>Home</title>
+
 </head>
-<body>
-<h1>
-	Hello world!  
-</h1>
+<body ng-controller="myController">
+	<h1>Hello world!</h1>
 
+	<div id="table">
+		{{test}}
+	</div>
+	<label>{{info}}</label>
 
-<div id="table"></div>
-
-<form th:action="@{/Clientes/Guardar}" method="post">
-	<input name="nombre" placeholder="Ingrese su nombre"/>
-	<input name="apellido" placeholder="Ingrese su apellido"/>
-	<button id="save" type="submit" title="Guardar">Guardar</button>
-</form>
-
+	<form th:action="@{/Clientes/Guardar}" method="post">
+		<input name="nombre" placeholder="Ingrese su nombre" ng-model="info"/> <input
+			name="apellido" placeholder="Ingrese su apellido" />
+		<button id="save" type="submit" title="Guardar">Guardar</button>
+	</form>
+	
 </body>
 </html>

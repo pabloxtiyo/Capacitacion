@@ -5,9 +5,13 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.jolbox.bonecp.BoneCPDataSource;
 
 @Configuration
-@EnableTransactionManagement(proxyTargetClass = true)
+@EnableTransactionManagement
 @EnableJpaRepositories("com.pportillo.localiza.model.repository")
 public class DataConfig {
 
@@ -28,9 +32,9 @@ public class DataConfig {
 	public DataSource dataSource() {
 		BoneCPDataSource datasource = new BoneCPDataSource();
 		datasource.setDriverClass("org.postgresql.Driver");
-		datasource.setJdbcUrl("jdbc:postgresql://localhost/localiza_db");
+		datasource.setJdbcUrl("jdbc:postgresql://localhost/prueba");
 		datasource.setUsername("postgres");
-		datasource.setPassword("postgres");
+		datasource.setPassword("0000");
 		return datasource;
 	}
 
@@ -73,4 +77,5 @@ public class DataConfig {
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager();
 	}
+
 }
